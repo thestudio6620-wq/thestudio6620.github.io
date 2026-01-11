@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THESTUDIO | Professional Fashion Design & Development</title>
+    <meta name="description" content="THESTUDIO - High-end fashion design studio, professional clothing design, technical drawing, pattern making and customization service for global fashion brands">
+    <meta name="keywords" content="Fashion Design, Clothing Design, Technical Drawing, Garment Pattern, Custom Fashion, THESTUDIO">
+    <meta name="author" content="THESTUDIO">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        :root {
+            --primary: #0A2463; /* 品牌主色-藏青色，贴合你的服装配色需求 */
+            --secondary: #3E4A61;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #E9ECEF;
+            --border: #DEE2E6;
+            --transition: all 0.4s ease;
+        }
+        body {
+            color: var(--dark);
+            background-color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            cursor: pointer;
+            background: transparent;
+        }
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .section {
+            padding: 6rem 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 4rem;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 999;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        /* 英雄区 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10,36,99,0.02), rgba(10,36,99,0.02)), url(https://picsum.photos/id/1068/1920/1080);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 80px;
+            padding: 0 2rem;
+        }
+        .hero-content {
+            max-width: 600px;
+            background: rgba(255,255,255,0.9);
+            padding: 4rem;
+            border-left: 4px solid var(--primary);
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .hero-text {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+        /* 品牌介绍 */
+        .about {
+            background: var(--light);
+        }
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .about-text p {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        /* 服装设计展示区 - 核心板块 含线稿/成衣 */
+        .designs {
+            background: white;
+        }
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .design-card {
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .design-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .design-img {
+            height: 380px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .design-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .design-title {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .design-desc {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        /* 服装线稿/展开图 专属板块 - 匹配你的需求核心 */
+        .technical {
+            background: var(--light);
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .tech-card {
+            background: white;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .tech-img {
+            height: 320px;
+            width: 100%;
+            object-fit: contain;
+            filter: grayscale(1); /* 黑白线稿效果 完美匹配你的需求 */
+        }
+        .tech-title {
+            margin-top: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        /* 定制服务 */
+        .service {
+            text-align: center;
+        }
+        .service-text {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        /* 联系板块 */
+        .contact {
+            background: var(--primary);
+            color: white;
+        }
+        .contact-title {
+            color: white;
+        }
+        .contact-container {
+            text-align: center;
+        }
+        .contact-info {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .contact-info a {
+            text-decoration: underline;
+        }
+        .contact-btn {
+            border-color: white;
+            color: white;
+        }
+        .contact-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+        /* 页脚 */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .copyright {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        /* 响应式适配 - 移动端友好 */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1.5rem;
+            }
+            .hero {
+                height: auto;
+                padding: 4rem 2rem;
+            }
+            .hero-content {
+                padding: 2rem;
+            }
+            .section {
+                padding: 4rem 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            .nav-menu {
+                gap: 1rem;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .design-img, .tech-img {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 - 固定顶部 品牌醒目 -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">THESTUDIO</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#designs" class="nav-link">Designs</a></li>
+                <li><a href="#technical" class="nav-link">Technical Drawing</a></li>
+                <li><a href="#service" class="nav-link">Service</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 英雄区 - 视觉主页面 高端氛围感 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Professional Fashion Design For Global Brands</h1>
+            <p class="hero-text">High-quality garment design, technical drawing, pattern making and custom production. We turn your fashion ideas into reality.</p>
+            <button class="btn">Explore Our Designs</button>
+        </div>
+    </section>
+
+    <!-- 品牌介绍 -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">ABOUT THESTUDIO</h2>
+            <div class="about-container">
+                <div class="about-text">
+                    <h3>We Are A Professional Fashion Design Studio</h3>
+                    <p>THESTUDIO is a professional fashion design company focusing on overseas garment design and development. We have a professional design team with rich experience in clothing line draft drawing, flat expansion drawing production, color matching and style customization.</p>
+                    <p>Our core business covers all aspects of clothing design: from original style design, professional black and white line draft, front and back expansion drawing production, to color matching adjustment and sample customization, to meet the personalized design needs of global fashion brands and buyers.</p>
+                    <p>Adhering to the design concept of minimalism and high quality, we focus on details and quality, and create high-grade and practical clothing designs for our customers.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://picsum.photos/id/1059/600/700" alt="Fashion Design Studio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服装设计成品展示 - 成衣效果 -->
+    <section class="section designs" id="designs">
+        <div class="container">
+            <h2 class="section-title">OUR FASHION DESIGNS</h2>
+            <div class="design-grid">
+                <div class="design-card">
+                    <img src="https://picsum.photos/id/177/600/800" alt="Women's Top Design" class="design-img">
+                    <div class="design-info">
+                        <h3 class="design-title">Women's Casual Top</h3>
+                        <p class="design-desc">Navy & White Color Scheme | Custom Fabric</p>
+                    </div>
+                </div>
+                <div class="design-card">
+                    <img src="https://picsum.photos/id/325/600/800" alt="Outdoor Wear Design" class="design-img">
+                    <div class="design-info">
+                        <h3 class="design-title">Outdoor Functional Wear</h3>
+                        <p class="design-desc">Matching Hiking Shoes | Multi-pocket Design</p>
+                    </div>
+                </div>
+                <div class="design-card">
+                    <img src="https://picsum.photos/id/441/600/800" alt="Minimalist Garment Design" class="design-img">
+                    <div class="design-info">
+                        <h3 class="design-title">Minimalist Basic Series</h3>
+                        <p class="design-desc">Solid Color | Loose Version | All-match Style</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ 核心重点：服装黑白线稿/展开图板块 完全匹配你的需求 -->
+    <section class="section technical" id="technical">
+        <div class="container">
+            <h2 class="section-title">TECHNICAL DRAWING & FLAT PATTERN</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <img src="https://picsum.photos/id/180/600/800" alt="Front & Back Line Drawing" class="tech-img">
+                    <h3 class="tech-title">Front & Back Garment Line Draft</h3>
+                </div>
+                <div class="tech-card">
+                    <img src="https://picsum.photos/id/21/600/800" alt="Clothing Expansion Drawing" class="tech-img">
+                    <h3 class="tech-title">Full Garment Expansion Pattern</h3>
+                </div>
+                <div class="tech-card">
+                    <img src="https://picsum.photos/id/237/600/800" alt="Details Line Drawing" class="tech-img">
+                    <h3 class="tech-title">Details & Stitching Draft</h3>
+                </div>
+                <div class="tech-card">
+                    <img src="https://picsum.photos/id/364/600/800" alt="Accessories Line Drawing" class="tech-img">
+                    <h3 class="tech-title">Shoes & Accessories Matching Draft</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 定制服务板块 - 出海业务核心卖点 -->
+    <section class="section service" id="service">
+        <div class="container">
+            <h2 class="section-title">CUSTOM DESIGN SERVICE</h2>
+            <p class="service-text">We provide one-stop customized clothing design services for global customers, including style design, color adjustment, line draft optimization, expansion drawing production, sample making and mass production follow-up. All designs can be adjusted according to your needs: color matching (navy/caramel/black and white), version modification, details adding and so on.</p>
+            <button class="btn">Custom Your Design Now</button>
+        </div>
+    </section>
+
+    <!-- 联系板块 - 出海必备 清晰的联系方式 -->
+    <section class="section contact" id="contact">
+        <div class="container contact-container">
+            <h2 class="section-title contact-title">CONTACT US</h2>
+            <div class="contact-info">
+                <p>Email: info@thestudio-fashion.com</p>
+                <p>WhatsApp: +1 234 567 8900</p>
+                <p>Website: www.thestudio-fashion.com</p>
+            </div>
+            <button class="btn contact-btn">Send Inquiry</button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p class="copyright">© 2026 THESTUDIO | All Rights Reserved | Professional Fashion Design Studio</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动效果 - 点击导航跳转到对应板块 提升体验
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 导航栏滚动变色效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
